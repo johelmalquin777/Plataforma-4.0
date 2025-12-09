@@ -1,0 +1,2793 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tecnologías - Laboratorio de Logística</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        .hero-image {
+            position: relative;
+            height: 50vh;
+            overflow: hidden;
+        }
+        
+        .hero-image img {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            min-width: 100%;
+            min-height: 100%;
+            z-index: 0;
+            object-fit: cover;
+            filter: brightness(0.7);
+            transition: filter 0.5s ease;
+        }
+
+        .hero-image:hover img {
+            filter: brightness(0.5);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .gradient-overlay {
+            background: linear-gradient(135deg, rgba(44, 62, 80, 0.9) 0%, rgba(18, 122, 74, 0.8) 100%);
+        }
+        
+        .bg-primary {
+            background-color: #2c3e50;
+        }
+        
+        .text-primary {
+            color: #2c3e50;
+        }
+        
+        .border-primary {
+            border-color: #2c3e50;
+        }
+        
+        .hover\:bg-primary:hover {
+            background-color: #1a252f;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .infographic-item {
+            transition: all 0.3s ease;
+        }
+        
+        .infographic-item:hover {
+            transform: scale(1.05);
+        }
+        
+        .gallery-item {
+            transition: all 0.3s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.03);
+            filter: brightness(1.1);
+        }
+        
+        .parallax {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        
+        .tech-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #006633;
+        }
+        
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 1px solid #e1e8ed;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            border-color: #006633;
+        }
+        
+        .stats-card {
+            background: linear-gradient(135deg, #006633, #054625);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .innovation-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .innovation-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+        
+        .process-step {
+            position: relative;
+            padding: 2rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .process-step:hover {
+            transform: scale(1.05);
+        }
+        
+        .process-step:before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: -30px;
+            width: 60px;
+            height: 2px;
+            background: #006633;
+        }
+        
+        .process-step:last-child:before {
+            display: none;
+        }
+        
+        @media (max-width: 768px) {
+            .process-step:before {
+                display: none;
+            }
+        }
+        
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .gallery-image {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .gallery-image:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+        
+        .testimonial-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+        
+        .timeline-item {
+            position: relative;
+            padding-left: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .timeline-item:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 12px;
+            height: 12px;
+            background: #006633;
+            border-radius: 50%;
+        }
+        
+        .timeline-item:after {
+            content: '';
+            position: absolute;
+            left: 5px;
+            top: 20px;
+            width: 2px;
+            height: calc(100% + 10px);
+            background: #006633;
+        }
+        
+        .timeline-item:last-child:after {
+            display: none;
+        }
+        
+        .specialization-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 1px solid #e1e8ed;
+        }
+        
+        .specialization-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            border-color: #006633;
+        }
+        
+        .year-selector {
+            display: flex;
+            overflow-x: auto;
+            gap: 1rem;
+            padding: 1rem 0;
+            margin-bottom: 2rem;
+        }
+        
+        .year-btn {
+            background: #e1e8ed;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .year-btn.active {
+            background: #006633;
+            color: white;
+        }
+        
+        .milestones-container {
+            max-height: 400px;
+            overflow-y: auto;
+            padding-right: 1rem;
+        }
+        
+        /* Custom scrollbar */
+        .milestones-container::-webkit-scrollbar {
+            width: 6px;
+        }
+        
+        .milestones-container::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        
+        .milestones-container::-webkit-scrollbar-thumb {
+            background: #006633;
+            border-radius: 10px;
+        }
+        
+        /* Floating sidebar */
+        .floating-sidebar {
+            position: fixed;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .sidebar-item {
+            width: 60px;
+            height: 60px;
+            background: #006633;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .sidebar-item:hover {
+            background: #006633;
+            transform: scale(1.1);
+            width: auto;
+            padding: 0 1.5rem;
+            border-radius: 5%;
+        }
+        
+        .sidebar-item:hover i {
+            margin-right: 0.5rem;
+        }
+        
+        .sidebar-item i {
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .sidebar-item span {
+            display: none;
+            white-space: nowrap;
+        }
+        
+        .sidebar-item:hover span {
+            display: inline;
+        }
+        
+        @media (max-width: 768px) {
+            .floating-sidebar {
+                left: 10px;
+            }
+            
+            .sidebar-item {
+                width: 50px;
+                height: 50px;
+            }
+            
+            .sidebar-item:hover {
+                padding: 0 1rem;
+            }
+        }
+        
+        .collage-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-gap: 10px;
+            grid-auto-rows: minmax(100px, auto);
+        }
+        
+        .collage-item:nth-child(1) {
+            grid-column: 1 / 3;
+            grid-row: 1 / 3;
+        }
+        
+        .collage-item:nth-child(2) {
+            grid-column: 3 / 5;
+            grid-row: 1 / 2;
+        }
+        
+        .collage-item:nth-child(3) {
+            grid-column: 3 / 4;
+            grid-row: 2 / 4;
+        }
+        
+        .collage-item:nth-child(4) {
+            grid-column: 4 / 5;
+            grid-row: 2 / 3;
+        }
+        
+        .collage-item:nth-child(5) {
+            grid-column: 4 / 5;
+            grid-row: 3 / 4;
+        }
+        
+        .collage-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .image-card {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .image-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+        
+        .image-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .image-card .content {
+            padding: 1.5rem;
+            background: white;
+        }
+        
+        /* Animaciones mejoradas */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate-fade-in-up {
+            animation: fadeInUp 0.8s ease-out;
+        }
+        
+        /* Efecto parallax para secciones */
+        .parallax-section {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        
+        /* Gradientes mejorados */
+        .gradient-bg {
+            background: linear-gradient(135deg, #006633 0%, #2c3e50 100%);
+        }
+        
+        .gradient-overlay-2 {
+            background: linear-gradient(45deg, rgba(0, 102, 51, 0.85) 0%, rgba(44, 62, 80, 0.85) 100%);
+        }
+        
+        /* Cards con efecto 3D */
+        .card-3d {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transform-style: preserve-3d;
+        }
+        
+        .card-3d:hover {
+            transform: translateY(-10px) rotateX(5deg);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+        
+        /* Botones con efecto hover */
+        .btn-animated {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-animated::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: all 0.6s;
+        }
+        
+        .btn-animated:hover::before {
+            left: 100%;
+        }
+        
+        /* Efecto de onda en botones */
+        .ripple {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .ripple::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 5px;
+            height: 5px;
+            background: rgba(255, 255, 255, 0.5);
+            opacity: 0;
+            border-radius: 100%;
+            transform: scale(1, 1) translate(-50%);
+            transform-origin: 50% 50%;
+        }
+        
+        .ripple:focus:not(:active)::after {
+            animation: ripple 1s ease-out;
+        }
+        
+        @keyframes ripple {
+            0% {
+                transform: scale(0, 0);
+                opacity: 0.5;
+            }
+            100% {
+                transform: scale(50, 50);
+                opacity: 0;
+            }
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 1024px) {
+            .collage-container {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .collage-item:nth-child(1) {
+                grid-column: 1 / 3;
+                grid-row: 1 / 2;
+            }
+            
+            .collage-item:nth-child(2) {
+                grid-column: 3 / 4;
+                grid-row: 1 / 2;
+            }
+            
+            .collage-item:nth-child(3) {
+                grid-column: 1 / 2;
+                grid-row: 2 / 3;
+            }
+            
+            .collage-item:nth-child(4) {
+                grid-column: 2 / 4;
+                grid-row: 2 / 3;
+            }
+            
+            .collage-item:nth-child(5) {
+                grid-column: 1 / 4;
+                grid-row: 3 / 4;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .collage-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .collage-item {
+                grid-column: 1 !important;
+                grid-row: auto !important;
+            }
+            
+            .hero-image {
+                height: 40vh;
+            }
+            
+            h1 {
+                font-size: 2.5rem !important;
+            }
+            
+            h2 {
+                font-size: 2rem !important;
+            }
+            
+            .process-step:before {
+                display: none;
+            }
+            
+            .grid-cols-3 {
+                grid-template-columns: 1fr;
+            }
+            
+            .grid-cols-2 {
+                grid-template-columns: 1fr;
+            }
+            
+            .md\:grid-cols-2 {
+                grid-template-columns: 1fr;
+            }
+            
+            .md\:grid-cols-3 {
+                grid-template-columns: 1fr;
+            }
+            
+            .md\:grid-cols-4 {
+                grid-template-columns: 1fr;
+            }
+            
+            .md\:grid-cols-5 {
+                grid-template-columns: 1fr;
+            }
+            
+            .lg\:grid-cols-2 {
+                grid-template-columns: 1fr;
+            }
+            
+            .lg\:order-1 {
+                order: 1;
+            }
+            
+            .lg\:order-2 {
+                order: 2;
+            }
+            
+            .floating-sidebar {
+                flex-direction: row;
+                top: auto;
+                bottom: 20px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 90%;
+                overflow-x: auto;
+                padding: 10px;
+            }
+            
+            .sidebar-item {
+                width: 50px;
+                height: 50px;
+                min-width: 50px;
+            }
+            
+            .sidebar-item:hover {
+                width: 50px;
+                padding: 0;
+            }
+            
+            .sidebar-item span {
+                display: none;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero-content {
+                padding: 0 1rem;
+            }
+            
+            h1 {
+                font-size: 2rem !important;
+            }
+            
+            .text-2xl {
+                font-size: 1.25rem;
+            }
+            
+            .text-xl {
+                font-size: 1.125rem;
+            }
+            
+            .p-8 {
+                padding: 1rem;
+            }
+            
+            .p-6 {
+                padding: 1rem;
+            }
+        }
+        
+        /* Estilos específicos para esta página */
+        .tech-section {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+        
+        .tech-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 1px solid #e1e8ed;
+        }
+        
+        .tech-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            border-color: #006633;
+        }
+        
+        .tech-header {
+            background: linear-gradient(135deg, #006633 0%, #2c3e50 100%);
+            color: white;
+            padding: 2rem;
+        }
+        
+        .tech-content {
+            padding: 2rem;
+        }
+        
+        .tech-subtitle {
+            color: #006633;
+            font-weight: 600;
+        }
+        
+        .tech-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        
+        .tech-list li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #e1e8ed;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .tech-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .tech-list li i {
+            color: #006633;
+            margin-right: 1rem;
+            margin-top: 0.25rem;
+        }
+        
+        .timeline-stage {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-left: 4px solid #006633;
+        }
+        
+        .research-item {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            border-left: 3px solid #006633;
+        }
+        
+        .application-item {
+            background: #e8f5e9;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            border-left: 3px solid #2c3e50;
+        }
+        
+        .tech-badge {
+            display: inline-block;
+            background: #006633;
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Backgrounds animados */
+        .animated-bg {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .animated-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, 
+                rgba(0, 102, 51, 0.1) 0%, 
+                rgba(44, 62, 80, 0.1) 25%, 
+                rgba(0, 102, 51, 0.1) 50%, 
+                rgba(44, 62, 80, 0.1) 75%, 
+                rgba(0, 102, 51, 0.1) 100%);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            z-index: 0;
+        }
+        
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .tech-bg-1 { background: linear-gradient(135deg, #1a2a6c, #b21f1f, #1a2a6c); }
+        .tech-bg-2 { background: linear-gradient(135deg, #3a1c71, #d76d77, #ffaf7b); }
+        .tech-bg-3 { background: linear-gradient(135deg, #0f2027, #203a43, #2c5364); }
+        .tech-bg-4 { background: linear-gradient(135deg, #141e30, #243b55, #141e30); }
+        .tech-bg-5 { background: linear-gradient(135deg, #23074d, #cc5333, #23074d); }
+        .tech-bg-6 { background: linear-gradient(135deg, #1d2b64, #f8cdda, #1d2b64); }
+        .tech-bg-7 { background: linear-gradient(135deg, #000428, #004e92, #000428); }
+        .tech-bg-8 { background: linear-gradient(135deg, #3a6073, #3a7bd5, #3a6073); }
+        
+        /* Efectos interactivos */
+        .interactive-card {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .interactive-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%);
+            transform: scale(0);
+            transition: transform 0.5s ease;
+        }
+        
+        .interactive-card:hover::before {
+            transform: scale(1);
+        }
+        
+        /* Galería interactiva */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .gallery-item {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .gallery-item .overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            padding: 1.5rem;
+            color: white;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover .overlay {
+            transform: translateY(0);
+        }
+        
+        /* Slider de imágenes */
+        .image-slider {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin: 2rem 0;
+        }
+        
+        .slider-container {
+            display: flex;
+            width: 400%;
+            height: 100%;
+            transition: transform 0.5s ease-in-out;
+        }
+        
+        .slide {
+            width: 25%;
+            height: 100%;
+            position: relative;
+        }
+        
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .slide-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            padding: 2rem;
+            color: white;
+            transform: translateY(0);
+        }
+        
+        .slider-controls {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+            padding: 0 1rem;
+            z-index: 10;
+        }
+        
+        .slider-btn {
+            background: rgba(255,255,255,0.2);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .slider-btn:hover {
+            background: rgba(255,255,255,0.4);
+            transform: scale(1.1);
+        }
+        
+        .slider-dots {
+            position: absolute;
+            bottom: 1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 0.5rem;
+            z-index: 10;
+        }
+        
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .dot.active {
+            background: white;
+            transform: scale(1.2);
+        }
+        
+        /* Tarjetas 3D flotantes */
+        .floating-card {
+            perspective: 1000px;
+            transform-style: preserve-3d;
+            transition: transform 0.5s ease;
+        }
+        
+        .floating-card:hover {
+            transform: translateY(-10px) rotateX(5deg) rotateY(5deg);
+        }
+        
+        .card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            transition: transform 0.6s;
+        }
+        
+        .floating-card:hover .card-inner {
+            transform: rotateY(180deg);
+        }
+        
+        .card-front, .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        .card-front {
+            background: linear-gradient(135deg, #006633, #2c3e50);
+            color: white;
+        }
+        
+        .card-back {
+            background: white;
+            color: #333;
+            transform: rotateY(180deg);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .tech-icon-3d {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        
+        .tech-name {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .tech-description {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Floating Sidebar Menu -->
+    <nav class="floating-sidebar">
+        <a href="#inicio" class="sidebar-item" title="Inicio">
+            <i class="fas fa-home"></i>
+            <span>Inicio</span>
+        </a>
+        <a href="#tecnologias" class="sidebar-item" title="Tecnologías">
+            <i class="fas fa-th-large"></i>
+            <span>Tecnologías</span>
+        </a>
+        <a href="#tecnologia1" class="sidebar-item" title="CAD y Tecnologías Inmersivas">
+            <i class="fas fa-cube"></i>
+            <span>CAD y Tecnologías Inmersivas</span>
+        </a>
+        <a href="#tecnologia2" class="sidebar-item" title="Sistemas Autónomos">
+            <i class="fas fa-robot"></i>
+            <span>Sistemas Autónomos</span>
+        </a>
+        <a href="#tecnologia3" class="sidebar-item" title="Analítica y Datos">
+            <i class="fas fa-chart-line"></i>
+            <span>Analítica y Datos</span>
+        </a>
+        <a href="#tecnologia4" class="sidebar-item" title="ERP y Cloud">
+            <i class="fas fa-cloud"></i>
+            <span>ERP y Cloud</span>
+        </a>
+        <a href="#tecnologia5" class="sidebar-item" title="Simuladores">
+            <i class="fas fa-simulation"></i>
+            <span>Simuladores</span>
+        </a>
+        <a href="#tecnologia6" class="sidebar-item" title="Ingeniería de Instalaciones">
+            <i class="fas fa-building"></i>
+            <span>Ingeniería de Instalaciones</span>
+        </a>
+        <a href="#tecnologia7" class="sidebar-item" title="IA y Aprendizaje">
+            <i class="fas fa-brain"></i>
+            <span>IA y Aprendizaje</span>
+        </a>
+        <a href="#tecnologia8" class="sidebar-item" title="Plataformas Digitales">
+            <i class="fas fa-network-wired"></i>
+            <span>Plataformas Digitales</span>
+        </a>
+        <a href="#galeria" class="sidebar-item" title="Galería">
+            <i class="fas fa-images"></i>
+            <span>Galería</span>
+        </a>
+    </nav>
+
+    <!-- Hero Section with Image Background -->
+    <section id="inicio" class="hero-image relative">
+        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Tecnologías 4.0 en Logística">
+        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-transparent opacity-90 z-10"></div>
+        <div class="hero-content container mx-auto px-6 relative z-20 h-full flex items-center justify-center">
+            <div class="text-white max-w-4xl text-center">
+                <h1 class="text-5xl md:text-7xl font-bold mb-6 animate-fade-in-up">Tecnologías 4.0</h1>
+                <p class="text-2xl ">Laboratorio de Logística y Procesos Industriales</p>
+            </div>
+        </div>
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white animate-bounce">
+            <i class="fas fa-chevron-down text-3xl"></i>
+        </div>
+    </section>
+
+    <!-- Tecnologías en Tarjetas 3D Flotantes -->
+    <section id="tecnologias" class="py-20 bg-gradient-to-br from-gray-100 to-gray-200">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-800 mb-6">Nuestras Tecnologías 4.0</h2>
+                <div class="w-32 h-1 bg-gradient-to-r from-green-600 to-[#006633] mx-auto mb-8"></div>
+                <p class="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+                    Explora nuestras 8 categorías tecnológicas que transforman la logística moderna
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Tecnología 1 -->
+                <div class="floating-card h-64">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <i class="tech-icon-3d fas fa-cube"></i>
+                            <div class="tech-name">CAD y Tecnologías Inmersivas</div>
+                        </div>
+                        <div class="card-back">
+                            <div class="tech-description">
+                                Diseño, Visualización y Validación 3D
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Tecnología 2 -->
+                <div class="floating-card h-64">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <i class="tech-icon-3d fas fa-robot"></i>
+                            <div class="tech-name">Sistemas Autónomos</div>
+                        </div>
+                        <div class="card-back">
+                            <div class="tech-description">
+                                Productividad, Trazabilidad y Seguridad
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Tecnología 3 -->
+                <div class="floating-card h-64">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <i class="tech-icon-3d fas fa-chart-line"></i>
+                            <div class="tech-name">Analítica y Datos</div>
+                        </div>
+                        <div class="card-back">
+                            <div class="tech-description">
+                                Datos que Generan Decisiones
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Tecnología 4 -->
+                <div class="floating-card h-64">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <i class="tech-icon-3d fas fa-cloud"></i>
+                            <div class="tech-name">ERP y Cloud</div>
+                        </div>
+                        <div class="card-back">
+                            <div class="tech-description">
+                                Integración y Escalabilidad en Tiempo Real
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Tecnología 5 -->
+                <div class="floating-card h-64">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <i class="tech-icon-3d fas fa-simulation"></i>
+                            <div class="tech-name">Simuladores</div>
+                        </div>
+                        <div class="card-back">
+                            <div class="tech-description">
+                                Validación y Entrenamiento sin Interrupciones
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Tecnología 6 -->
+                <div class="floating-card h-64">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <i class="tech-icon-3d fas fa-building"></i>
+                            <div class="tech-name">Ingeniería de Instalaciones</div>
+                        </div>
+                        <div class="card-back">
+                            <div class="tech-description">
+                                Infraestructura Eficiente, Ergonómica y Sostenible
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Tecnología 7 -->
+                <div class="floating-card h-64">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <i class="tech-icon-3d fas fa-brain"></i>
+                            <div class="tech-name">IA y Aprendizaje</div>
+                        </div>
+                        <div class="card-back">
+                            <div class="tech-description">
+                                Eje Transversal - Potenciando Todas las Tecnologías
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Tecnología 8 -->
+                <div class="floating-card h-64">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <i class="tech-icon-3d fas fa-network-wired"></i>
+                            <div class="tech-name">Plataformas Digitales</div>
+                        </div>
+                        <div class="card-back">
+                            <div class="tech-description">
+                                Conectividad y Visibilidad End-to-End
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tecnología 1: Sistemas CAD y Tecnologías Inmersivas -->
+    <section id="tecnologia1" class="py-20 animated-bg tech-bg-1 relative">
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="tech-card mb-16">
+                <div class="tech-header">
+                    <div class="flex items-center mb-4">
+                        <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center mr-6">
+                            <i class="fas fa-cube text-green-600 text-2xl"></i>
+                        </div>
+                        <div>
+                            <h2 class="text-3xl md:text-4xl font-bold">1. Sistemas CAD y Tecnologías Inmersivas</h2>
+                            <p class="text-xl opacity-90 mt-2">Diseño, Visualización y Validación 3D</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tech-content">
+                    <p class="text-lg text-gray-700 mb-8 leading-relaxed">
+                        Diseñamos, visualizamos y validamos centros de distribución, plantas y flujos de trabajo en 3D. Combinamos CAD + BIM con VR/AR/MR, Gemelos Digitales y Metaverso para acelerar decisiones, reducir costos y entrenar talento sin riesgo.
+                    </p>
+                    
+                    <div class="image-slider mb-12">
+                        <div class="slider-container">
+                            <div class="slide">
+                                <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="Diseño 3D">
+                                <div class="slide-content">
+                                    <h3 class="text-2xl font-bold">Diseño 3D y BIM</h3>
+                                    <p>Modelado avanzado de instalaciones logísticas</p>
+                                </div>
+                            </div>
+                            <div class="slide">
+                                <img src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Realidad Virtual">
+                                <div class="slide-content">
+                                    <h3 class="text-2xl font-bold">Realidad Virtual</h3>
+                                    <p>Entrenamiento inmersivo sin riesgos</p>
+                                </div>
+                            </div>
+                            <div class="slide">
+                                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Gemelos Digitales">
+                                <div class="slide-content">
+                                    <h3 class="text-2xl font-bold">Gemelos Digitales</h3>
+                                    <p>Simulación conectada a datos operativos</p>
+                                </div>
+                            </div>
+                            <div class="slide">
+                                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Metaverso">
+                                <div class="slide-content">
+                                    <h3 class="text-2xl font-bold">Metaverso Logístico</h3>
+                                    <p>Colaboración remota inmersiva</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slider-controls">
+                            <button class="slider-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
+                            <button class="slider-btn next-btn"><i class="fas fa-chevron-right"></i></button>
+                        </div>
+                        <div class="slider-dots">
+                            <div class="dot active"></div>
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-800 mb-6 tech-subtitle">Subtecnologías 4.0 incluidas:</h3>
+                            <ul class="tech-list">
+                                <li>
+                                    <i class="fas fa-check-circle"></i>
+                                    <div>
+                                        <strong>CAD/BIM:</strong> AutoCAD, SolidWorks, Revit
+                                    </div>
+                                </li>
+                                <li>
+                                    <i class="fas fa-check-circle"></i>
+                                    <div>
+                                        <strong>VR/AR/MR y Metaverso:</strong> Unreal Engine, Unity, visores VR/AR, hápticos
+                                    </div>
+                                </li>
+                                <li>
+                                    <i class="fas fa-check-circle"></i>
+                                    <div>
+                                        <strong>Gemelos Digitales:</strong> Acoplados a datos operativos (IoT/ERP/WMS)
+                                    </div>
+                                </li>
+                                <li>
+                                    <i class="fas fa-check-circle"></i>
+                                    <div>
+                                        <strong>Renderizado tiempo real:</strong> Colaboración remota inmersiva
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-800 mb-6 tech-subtitle">Líneas de investigación:</h3>
+                            <div class="space-y-4">
+                                <div class="research-item">
+                                    <i class="fas fa-search text-green-600 mr-2"></i>
+                                    <strong>Diseño y validación de instalaciones logísticas en VR</strong>
+                                </div>
+                                <div class="research-item">
+                                    <i class="fas fa-search text-green-600 mr-2"></i>
+                                    <strong>Integración BIM–Logística y evaluación ergonómica inmersiva</strong>
+                                </div>
+                                <div class="research-item">
+                                    <i class="fas fa-search text-green-600 mr-2"></i>
+                                    <strong>Gemelos Digitales para pruebas de capacidad y seguridad</strong>
+                                </div>
+                                <div class="research-item">
+                                    <i class="fas fa-search text-green-600 mr-2"></i>
+                                    <strong>Metodologías de formación inmersiva y rendimiento del aprendizaje</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-12">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-6 tech-subtitle">Componentes de aplicación:</h3>
+                        <div class="flex flex-wrap">
+                            <span class="tech-badge">Librerías BIM de racks, MHE, estaciones de picking</span>
+                            <span class="tech-badge">Sensórica IoT para alimentar modelos</span>
+                            <span class="tech-badge">Plataformas colaborativas para co-diseño</span>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-6 tech-subtitle">Aplicaciones en práctica (timeline):</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                            <div class="timeline-stage">
+                                <div class="text-green-600 font-bold mb-2">Etapa 1</div>
+                                <div class="font-semibold mb-2">Formación</div>
+                                <p>Talleres de layout y flujo en CAD; simulaciones básicas 3D</p>
+                            </div>
+                            <div class="timeline-stage">
+                                <div class="text-blue-600 font-bold mb-2">Etapa 2</div>
+                                <div class="font-semibold mb-2">Entrenamiento</div>
+                                <p>Procedimientos de seguridad/picking en VR; evaluación ergonómica</p>
+                            </div>
+                            <div class="timeline-stage">
+                                <div class="text-purple-600 font-bold mb-2">Etapa 3</div>
+                                <div class="font-semibold mb-2">Empresas</div>
+                                <p>Rediseño virtual de CEDIS; revisión CAPEX/OPEX con gemelos</p>
+                            </div>
+                            <div class="timeline-stage">
+                                <div class="text-orange-600 font-bold mb-2">Etapa 4</div>
+                                <div class="font-semibold mb-2">I+D+i</div>
+                                <p>Publicaciones, proyectos internacionales y spin-offs de diseño inmersivo</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tecnología 2: Sistemas Autónomos y Conectados en Logística -->
+    <section id="tecnologia2" class="py-20 tech-section">
+        <div class="container mx-auto px-6">
+            <div class="tech-card mb-16">
+                <div class="tech-header tech-bg-2">
+                    <div class="flex items-center mb-4">
+                        <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center mr-6">
+                            <i class="fas fa-robot text-blue-600 text-2xl"></i>
+                        </div>
+                        <div>
+                            <h2 class="text-3xl md:text-4xl font-bold">2. Sistemas Autónomos y Conectados en Logística</h2>
+                            <p class="text-xl opacity-90 mt-2">Productividad, Trazabilidad y Seguridad</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tech-content">
+                    <p class="text-lg text-gray-700 mb-8 leading-relaxed">
+                        Desplegamos AGVs/AMRs, drones, robótica móvil y sistemas ciberfísicos conectados mediante IoT y comunicaciones M2M/5G para elevar la productividad, la trazabilidad y la seguridad.
+                    </p>
+                    
+                    <div class="image-slider mb-12">
+                        <div class="slider-container">
+                            <div class="slide">
+                                <img src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="AGVs/AMRs">
+                                <div class="slide-content">
+                                    <h3 class="text-2xl font-bold">AGVs/AMRs</h3>
+                                    <p>Automatización de transporte interno</p>
+                                </div>
+                            </div>
+                            <div class="slide">
+                                <img src="https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Drones">
+                                <div class="slide-content">
+                                    <h3 class="text-2xl font-bold">Drones Logísticos</h3>
+                                    <p>Inventarios y última milla</p>
+                                </div>
+                            </div>
+                            <div class="slide">
+                                <img src="https://images.unsplash.com/photo-1633356122102-3fe601e05bd2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="IoT">
+                                <div class="slide-content">
+                                    <h3 class="text-2xl font-bold">Internet de las Cosas</h3>
+                                    <p>Conectividad y trazabilidad</p>
+                                </div>
+                            </div>
+                            <div class="slide">
+                                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="5G">
+                                <div class="slide-content">
+                                    <h3 class="text-2xl font-bold">Comunicaciones 5G</h3>
+                                    <p>Baja latencia y alta velocidad</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slider-controls">
+                            <button class="slider-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
+                            <button class="slider-btn next-btn"><i class="fas fa-chevron-right"></i></button>
+                        </div>
+                        <div class="slider-dots">
+                            <div class="dot active"></div>
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-800 mb-6 tech-subtitle">Subtecnologías 4.0 incluidas:</h3>
+                            <ul class="tech-list">
+                                <li>
+                                    <i class="fas fa-check-circle"></i>
+                                    <div>
+                                        <strong>Robótica logística:</strong> AGV/AMR, cobots, ROS, PLC/SCADA
+                                    </div>
+                                </li>
+                                <li>
+                                    <i class="fas fa-check-circle"></i>
+                                    <div>
+                                        <strong>IoT:</strong> RFID/UHF, BLE, UWB para posicionamiento, GPS, sensores ambientales
+                                    </div>
+                                </li>
+                                <li>
+                                    <i class="fas fa-check-circle"></i>
+                                    <div>
+                                        <strong>Redes:</strong> M2M, 5G/Private 5G, LoRaWAN; edge computing
+                                    </div>
+                                </li>
+                                <li>
+                                    <i class="fas fa-check-circle"></i>
+                                    <div>
+                                        <strong>Ciberseguridad OT/IT:</strong> Segmentación, zero-trust
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-800 mb-6 tech-subtitle">Líneas de investigación:</h3>
+                            <div class="space-y-4">
+                                <div class="research-item">
+                                    <i class="fas fa-search text-blue-600 mr-2"></i>
+                                    <strong>Ruteo dinámico y orquestación de flotas autónomas</strong>
+                                </div>
+                                <div class="research-item">
+                                    <i class="fas fa-search text-blue-600 mr-2"></i>
+                                    <strong>Inventarios con drones y visión por computador</strong>
+                                </div>
+                                <div class="research-item">
+                                    <i class="fas fa-search text-blue-600 mr-2"></i>
+                                    <strong>Ciberresiliencia en logística conectada</strong>
+                                </div>
+                                <div class="research-item">
+                                    <i class="fas fa-search text-blue-600 mr-2"></i>
+                                    <strong>Impacto energético y sostenibilidad de sistemas autónomos</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-12">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-6 tech-subtitle">Componentes de aplicación:</h3>
+                        <div class="flex flex-wrap">
+                            <span class="tech-badge">Plataformas de control/telemetría</span>
+                            <span class="tech-badge">Middleware IoT</span>
+                            <span class="tech-badge">Gemelos de flota</span>
+                            <span class="tech-badge">Protocolos MQTT/OPC-UA</span>
+                            <span class="tech-badge">RTLS con UWB/vision</span>
+                            <span class="tech-badge">Sandboxes de seguridad</span>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-6 tech-subtitle">Aplicaciones en práctica (timeline):</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                            <div class="timeline-stage">
+                                <div class="text-green-600 font-bold mb-2">Etapa 1</div>
+                                <div class="font-semibold mb-2">Formación</div>
+                                <p>Programación de trayectorias de AGVs; inventarios con drones en entornos simulados</p>
+                            </div>
+                            <div class="timeline-stage">
+                                <div class="text-blue-600 font-bold mb-2">Etapa 2</div>
+                                <div class="font-semibold mb-2">Entrenamiento</div>
+                                <p>Pruebas de cadena de frío con IoT; AMRs en transporte interno</p>
+                            </div>
+                            <div class="timeline-stage">
+                                <div class="text-purple-600 font-bold mb-2">Etapa 3</div>
+                                <div class="font-semibold mb-2">Empresas</div>
+                                <p>Pilotos de última milla con drones; trazabilidad E2E en tiempo real con partners</p>
+                            </div>
+                            <div class="timeline-stage">
+                                <div class="text-orange-600 font-bold mb-2">Etapa 4</div>
+                                <div class="font-semibold mb-2">I+D+i</div>
+                                <p>Prototipos escalables y publicaciones sobre seguridad 5G/IoT</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tecnología 3: Analítica y Datos Inteligentes en Logística -->
+    <section id="tecnologia3" class="py-20 animated-bg tech-bg-3 relative">
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="tech-card mb-16">
+                <div class="tech-header">
+                    <div class="flex items-center mb-4">
+                        <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center mr-6">
+                            <i class="fas fa-chart-line text-purple-600 text-2xl"></i>
+                        </div>
+                        <div>
+                            <h2 class="text-3xl md:text-4xl font-bold">3. Analítica y Datos Inteligentes en Logística</h2>
+                            <p class="text-xl opacity-90 mt-2">Datos que Generan Decisiones</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tech-content">
+                    <p class="text-lg text-gray-700 mb-8 leading-relaxed">
+                        Convertimos datos en decisiones con Big Data, BI, ML/IA y analítica prescriptiva. Modelamos demanda, optimizamos inventarios y medimos desempeño con KPIs accionables.
+                    </p>
+                    
+                    <div class="image-slider mb-12">
+                        <div class="slider-container">
+                            <div class="slide">
+                                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Big Data">
+                                <div class="slide-content">
+                                    <h3 class="text-2xl font-bold">Big Data Analytics</h3>
+                                    <p>Procesamiento y análisis de grandes volúmenes de datos</p>
+                                </div>
+                            </div>
+                            <div class="slide">
+                                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Machine Learning">
+                                <div class="slide-content">
+                                    <h3 class="text-2xl font-bold">Machine Learning</h3>
+                                    <p>Modelos predictivos y prescriptivos</p>
+                                </div>
+                            </div>
+                            <div class="slide">
+                                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Business Intelligence">
+                                <div class="slide-content">
+                                    <h3 class="text-2xl font-bold">Business Intelligence</h3>
+                                    <p>Visualización y toma de decisiones basada en datos</p>
+                                </div>
+                            </div>
+                            <div class="slide">
+                                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Dashboard">
+                                <div class="slide-content">
+                                    <h3 class="text-2xl font-bold">Dashboards</h3>
+                                    <p>Visualización de KPIs en tiempo real</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slider-controls">
+                            <button class="slider-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
+                            <button class="slider-btn next-btn"><i class="fas fa-chevron-right"></i></button>
+                        </div>
+                        <div class="slider-dots">
+                            <div class="dot active"></div>
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-800 mb-6 tech-subtitle">Subtecnologías 4.0 incluidas:</h3>
+                            <ul class="tech-list">
+                                <li>
+                                    <i class="fas fa-check-circle"></i>
+                                    <div>
+                                        <strong>Data Lake/Lakehouse:</strong> ETL/ELT, time-series DB
+                                    </div>
+                                </li>
+                                <li>
+                                    <i class="fas fa-check-circle"></i>
+                                    <div>
+                                        <strong>BI:</strong> Power BI, Tableau, Qlik, streaming (Kafka)
+                                    </div>
+                                </li>
+                                <li>
+                                    <i class="fas fa-check-circle"></i>
+                                    <div>
+                                        <strong>Machine Learning:</strong> scikit-learn, XGBoost, Deep Learning (TensorFlow/PyTorch)
+                                    </div>
+                                </li>
+                                <li>
+                                    <i class="fas fa-check-circle"></i>
+                                    <div>
+                                        <strong>MLOps:</strong> Pipelines, versionado de modelos
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-800 mb-6 tech-subtitle">Líneas de investigación:</h3>
+                            <div class="space-y-4">
+                                <div class="research-item">
+                                    <i class="fas fa-search text-purple-600 mr-2"></i>
+                                    <strong>Forecasting de demanda multi-nivel</strong>
+                                </div>
+                                <div class="research-item">
+                                    <i class="fas fa-search text-purple-600 mr-2"></i>
+                                    <strong>Optimización de stock con datos en tiempo real</strong>
+                                </div>
+                                <div class="research-item">
+                                    <i class="fas fa-search text-purple-600 mr-2"></i>
+                                    <strong>Analítica de logística inversa y huella de carbono</strong>
+                                </div>
+                                <div class="research-item">
+                                    <i class="fas fa-search text-purple-600 mr-2"></i>
+                                    <strong>Detección de anomalías en operaciones</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-12">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-6 tech-subtitle">Componentes de aplicación:</h3>
+                        <div class="flex flex-wrap">
+                            <span class="tech-badge">Dashboards operativos/ejecutivos</span>
+                            <span class="tech-badge">Simulación de escenarios "what-if"</span>
+                            <span class="tech-badge">APIs para consumir predicciones</span>
+                            <span class="tech-badge">Catálogo de datos y gobierno</span>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-6 tech-subtitle">Aplicaciones en práctica (timeline):</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                            <div class="timeline-stage">
+                                <div class="text-green-600 font-bold mb-2">Etapa 1</div>
+                                <div class="font-semibold mb-2">Formación</div>
+                                <p>Talleres de BI y Python; pronósticos básicos</p>
+                            </div>
+                            <div class="timeline-stage">
+                                <div class="text-blue-600 font-bold mb-2">Etapa 2</div>
+                                <div class="font-semibold mb-2">Entrenamiento</div>
+                                <p>Modelos predictivos para reducir roturas de stock; visores en tiempo real</p>
+                            </div>
+                            <div class="timeline-stage">
+                                <div class="text-purple-600 font-bold mb-2">Etapa 3</div>
+                                <div class="font-semibold mb-2">Empresas</div>
+                                <p>Consultorías en optimización de inventarios y cadena de frío</p>
+                            </div>
+                            <div class="timeline-stage">
+                                <div class="text-orange-600 font-bold mb-2">Etapa 4</div>
+                                <div class="font-semibold mb-2">I+D+i</div>
+                                <p>Proyectos internacionales de Big Data; IA para logística resiliente</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tecnología 4: Sistemas ERP y Cloud Computing -->
+    <section id="tecnologia4" class="py-20 tech-section">
+        <div class="container mx-auto px-6">
+            <div class="tech-card mb-16">
+                <div class="tech-header tech-bg-4">
+                    <div class="flex items-center mb-4">
+                        <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center mr-6">
+                            <i class="fas fa-cloud text-orange-600 text-2xl"></i>
+                        </div>
+                        <div>
+                            <h2 class="text-3xl md:text-4xl font-bold">4. Sistemas ERP y Cloud Computing</h2>
+                            <p class="text-xl opacity-90 mt-2">Integración y Escalabilidad en Tiempo Real</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tech-content">
+                    <p class="text-lg text-gray-700 mb-8 leading-relaxed">
+                        Integramos compras, producción, inventario, finanzas y distribución con ERP; escalamos y conectamos procesos en cloud para operación en tiempo real y colaboración global.
+                    </p>
+                    
+                    <div class="image-slider mb-12">
+                        <div class="slider-container">
+                            <div class="slide">
+                                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="ERP">
+                                <div class="slide-content">
+                                    <h3 class="text-2xl font-bold">ERP Systems</h3>
+                                    <p>Integración de procesos empresariales</p>
+                                </div>
+                            </div>
+                            <div class="slide">
+                                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Cloud Computing">
+                                <div class="slide-content">
+                                    <h3 class="text-2xl font-bold">Cloud Computing</h3>
+                                    <p>Escalabilidad y colaboración global</p>
+                                </div>
+                            </div>
+                            <div class="slide">
+                                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Microservicios">
+                                <div class="slide-content">
+                                    <h3 class="text-2xl font-bold">Microservicios</h3>
+                                    <p>Arquitectura modular y flexible</p>
+                                </div>
+                            </div>
+                            <div class="slide">
+                                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="RPA">
+                                <div class="slide-content">
+                                    <h3 class="text-2xl font-bold">RPA</h3>
+                                    <p>Automatización de procesos administrativos</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slider-controls">
+                            <button class="slider-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
+                            <button class="slider-btn next-btn"><i class="fas fa-chevron-right"></i></button>
+                        </div>
+                        <div class="slider-dots">
+                            <div class="dot active"></div>
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-800 mb-6 tech-subtitle">Subtecnologías 4.0 incluidas:</h3>
+                            <ul class="tech-list">
+                                <li>
+                                    <i class="fas fa-check-circle"></i>
+                                    <div>
+                                        <strong>ERP:</strong> SAP S/4HANA, Oracle NetSuite, Odoo, Dynamics
+                                    </div>
+                                </li>
+                                <li>
+                                    <i class="fas fa-check-circle"></i>
+                                    <div>
+                                        <strong>iPaaS:</strong> Microservicios, APIs y eventos (Kafka)
+                                    </div>
+                                </li>
+                                <li>
+                                    <i class="fas fa-check-circle"></i>
+                                    <div>
+                                        <strong>Cloud:</strong> AWS, Azure, GCP, serverless, multicloud e híbrido
+                                    </div>
+                                </li>
+                                <li>
+                                    <i class="fas fa-check-circle"></i>
+                                    <div>
+                                        <strong>RPA:</strong> Para automatizar procesos administrativos
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-800 mb-6 tech-subtitle">Líneas de investigación:</h3>
+                            <div class="space-y-4">
+                                <div class="research-item">
+                                    <i class="fas fa-search text-orange-600 mr-2"></i>
+                                    <strong>ERP en PYMEs logísticas</strong>
+                                </div>
+                                <div class="research-item">
+                                    <i class="fas fa-search text-orange-600 mr-2"></i>
+                                    <strong>Interoperabilidad ERP–IoT–Analítica–WMS/TMS</strong>
+                                </div>
+                                <div class="research-item">
+                                    <i class="fas fa-search text-orange-600 mr-2"></i>
+                                    <strong>Seguridad y continuidad en cloud; eficiencia energética</strong>
+                                </div>
+                                <div class="research-item">
+                                    <i class="fas fa-search text-orange-600 mr-2"></i>
+                                    <strong>Gemelos Digitales conectados a ERP para planificación</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-12">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-6 tech-subtitle">Componentes de aplicación:</h3>
+                        <div class="flex flex-wrap">
+                            <span class="tech-badge">Flujos end-to-end (P2P, O2C, MRP, S&OP, S&OE)</span>
+                            <span class="tech-badge">Conectores con WMS/TMS/CRM</span>
+                            <span class="tech-badge">Identity & access management</span>
+                            <span class="tech-badge">Catálogo de integraciones estandarizadas</span>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-6 tech-subtitle">Aplicaciones en práctica (timeline):</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                            <div class="timeline-stage">
+                                <div class="text-green-600 font-bold mb-2">Etapa 1</div>
+                                <div class="font-semibold mb-2">Formación</div>
+                                <p>Laboratorios con Odoo/SAP; simulación de compras e inventarios</p>
+                            </div>
+                            <div class="timeline-stage">
+                                <div class="text-blue-600 font-bold mb-2">Etapa 2</div>
+                                <div class="font-semibold mb-2">Entrenamiento</div>
+                                <p>Integraciones ERP–IoT–BI; migraciones a nube</p>
+                            </div>
+                            <div class="timeline-stage">
+                                <div class="text-purple-600 font-bold mb-2">Etapa 3</div>
+                                <div class="font-semibold mb-2">Empresas</div>
+                                <p>Adopción ERP cloud en PYMEs; módulos avanzados de logística</p>
+                            </div>
+                            <div class="timeline-stage">
+                                <div class="text-orange-600 font-bold mb-2">Etapa 4</div>
+                                <div class="font-semibold mb-2">I+D+i</div>
+                                <p>Gemelos + ERP para planificación táctica; papers de impacto del Cloud ERP</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tecnología 5: Simuladores Logísticos -->
+    <section id="tecnologia5" class="py-20 animated-bg tech-bg-5 relative">
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="tech-card mb-16">
+                <div class="tech-header">
+                    <div class="flex items-center mb-4">
+                        <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center mr-6">
+                            <i class="fas fa-simulation text-cyan-600 text-2xl"></i>
+                        </div>
+                        <div>
+                            <h2 class="text-3xl md:text-4xl font-bold">5. Simuladores Logísticos</h2>
+                            <p class="text-xl opacity-90 mt-2">Validación y Entrenamiento sin Interrupciones</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tech-content">
+                    <p class="text-lg text-gray-700 mb-8 leading-relaxed">
+                        Replicamos operaciones con simulación discreta/dinámica/agent-based y gemelos digitales para validar diseños, medir riesgos y entrenar sin interrumpir la operación real.
+                    </p>
+                    
+                    <div class="image-slider mb-12">
+                        <div class="slider-container">
+                            <div class="slide">
+                                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Simulación Discreta">
+                                <div class="slide-content">
+                                    <h3 class="text-2xl font-bold">Simulación Discreta</h3>
+                                    <p>Modelado de procesos logísticos</p>
+                                </div>
+                            </div>
+                            <div class="slide">
+                                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Agent-Based">
+                                <div class="slide-content">
+                                    <h3 class="text-2xl font-bold">Agent-Based Modeling</h3>
+                                    <p>Simulación de comportamientos complejos</p>
+                                </div>
+                            </div>
+                            <div class="slide">
+                                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Monte Carlo">
+                                <div class="slide-content">
+                                    <h3 class="text-2xl font-bold">Optimización Monte Carlo</h3>
+                                    <p>Análisis de riesgos y variabilidad</p>
+                                </div>
+                            </div>
+                            <div class="slide">
+                                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Digital Twin">
+                                <div class="slide-content">
+                                    <h3 class="text-2xl font-bold">Digital Twin</h3>
+                                    <p>Gemelos digitales conectados</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slider-controls">
+                            <button class="slider-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
+                            <button class="slider-btn next-btn"><i class="fas fa-chevron-right"></i></button>
+                        </div>
+                        <div class="slider-dots">
+                            <div class="dot active"></div>
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-800 mb-6 tech-subtitle">Subtecnologías 4.0 incluidas:</h3>
+                            <ul class="tech-list">
+                                <li>
+                                    <i class="fas fa-check-circle"></i>
+                                    <div>
+                                        <strong>Simulación:</strong> FlexSim, AnyLogic, Simio; Monte Carlo y optimización
+                                    </div>
+                                </li>
+                                <li>
+                                    <i class="fas fa-check-circle"></i>
+                                    <div>
+                                        <strong>Integración con VR:</strong> Para entrenamiento inmersivo
+                                    </div>
+                                </li>
+                                <li>
+                                    <i class="fas fa-check-circle"></i>
+                                    <div>
+                                        <strong>Digital Twin:</strong> Conectado a datos IoT y ERP/WMS
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-800 mb-6 tech-subtitle">Líneas de investigación:</h3>
+                            <div class="space-y-4">
+                                <div class="research-item">
+                                    <i class="fas fa-search text-cyan-600 mr-2"></i>
+                                    <strong>Validación de procesos y dimensionamiento de recursos</strong>
+                                </div>
+                                <div class="research-item">
+                                    <i class="fas fa-search text-cyan-600 mr-2"></i>
+                                    <strong>Entrenamiento inmersivo de operarios</strong>
+                                </div>
+                                <div class="research-item">
+                                    <i class="fas fa-search text-cyan-600 mr-2"></i>
+                                    <strong>Diseño de CEDIS y transporte multimodal</strong>
+                                </div>
+                                <div class="research-item">
+                                    <i class="fas fa-search text-cyan-600 mr-2"></i>
+                                    <strong>Impacto energético/ambiental en escenarios simulados</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-12">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-6 tech-subtitle">Componentes de aplicación:</h3>
+                        <div class="flex flex-wrap">
+                            <span class="tech-badge">Modelos parametrizados de picking, cross-docking, sortation</span>
+                            <span class="tech-badge">Bancos de pruebas de seguridad y ergonomía</span>
+                            <span class="tech-badge">Estaciones gráficas y visores VR</span>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-6 tech-subtitle">Aplicaciones en práctica (timeline):</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                            <div class="timeline-stage">
+                                <div class="text-green-600 font-bold mb-2">Etapa 1</div>
+                                <div class="font-semibold mb-2">Formación</div>
+                                <p>Proyectos de picking y layout en simuladores</p>
+                            </div>
+                            <div class="timeline-stage">
+                                <div class="text-blue-600 font-bold mb-2">Etapa 2</div>
+                                <div class="font-semibold mb-2">Entrenamiento</div>
+                                <p>Flujos multimodales; reconfiguración con gemelos</p>
+                            </div>
+                            <div class="timeline-stage">
+                                <div class="text-purple-600 font-bold mb-2">Etapa 3</div>
+                                <div class="font-semibold mb-2">Empresas</div>
+                                <p>Rediseño de CEDIS con empresas; entrenamiento anti-fallas</p>
+                            </div>
+                            <div class="timeline-stage">
+                                <div class="text-orange-600 font-bold mb-2">Etapa 4</div>
+                                <div class="font-semibold mb-2">I+D+i</div>
+                                <p>IA + simulación para logística predictiva; participación en redes de digital twins</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tecnología 6: Ingeniería y Diseño de Instalaciones Logísticas -->
+    <section id="tecnologia6" class="py-20 tech-section">
+        <div class="container mx-auto px-6">
+            <div class="tech-card mb-16">
+                <div class="tech-header tech-bg-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center mr-6">
+                            <i class="fas fa-building text-indigo-600 text-2xl"></i>
+                        </div>
+                        <div>
+                            <h2 class="text-3xl md:text-4xl font-bold">6. Ingeniería y Diseño de Instalaciones Logísticas</h2>
+                            <p class="text-xl opacity-90 mt-2">Infraestructura Eficiente, Ergonómica y Sostenible</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tech-content">
+                    <p class="text-lg text-gray-700 mb-8 leading-relaxed">
+                        Diseñamos infraestructura con foco en eficiencia, ergonomía y sostenibilidad: desde el layout y manejo de materiales hasta seguridad, energía y resiliencia.
+                    </p>
+                    
+                    <div class="image-slider mb-12">
+                        <div class="slider-container">
+                            <div class="slide">
+                                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Layout Design">
+                                <div class="slide-content">
+                                    <h3 class="text-2xl font-bold">Diseño de Layouts</h3>
+                                    <p>Optimización de espacios y flujos</p>
+                                </div>
+                            </div>
+                            <div class="slide">
+                                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Ergonomía">
+                                <div class="slide-content">
+                                    <h3 class="text-2xl font-bold">Ergonomía Industrial</h3>
+                                    <p>Diseño centrado en el trabajador</p>
+                                </div>
+                            </div>
+                            <div class="slide">
+                                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Sostenibilidad">
+                                <div class="slide-content">
+                                    <h3 class="text-2xl font-bold">Sostenibilidad</h3>
+                                    <p>Eficiencia energética y huella de carbono</p>
+                                </div>
+                            </div>
+                            <div class="slide">
+                                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Seguridad">
+                                <div class="slide-content">
+                                    <h3 class="text-2xl font-bold">Seguridad Industrial</h3>
+                                    <p>Prevención de riesgos y resiliencia</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slider-controls">
+                            <button class="slider-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
+                            <button class="slider-btn next-btn"><i class="fas fa-chevron-right"></i></button>
+                        </div>
+                        <div class="slider-dots">
+                            <div class="dot active"></div>
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-800 mb-6 tech-subtitle">Subtecnologías 4.0 incluidas:</h3>
+                            <ul class="tech-list">
+                                <li>
+                                    <i class="fas fa-check-circle"></i>
+                                    <div>
+                                        <strong>SLP asistido:</strong> Por CAD/BIM; análisis de flujo digital
+                                    </div>
+                                </li>
+                                <li>
+                                    <i class="fas fa-check-circle"></i>
+                                    <div>
+                                        <strong>Sensórica IoT:</strong> Para energía/ambiente/ocupación
+                                    </div>
+                                </li>
+                                <li>
+                                    <i class="fas fa-check-circle"></i>
+                                    <div>
+                                        <strong>Evaluación:</strong> Con gemelos y simulación; analítica de riesgos
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-800 mb-6 tech-subtitle">Líneas de investigación:</h3>
+                            <div class="space-y-4">
+                                <div class="research-item">
+                                    <i class="fas fa-search text-indigo-600 mr-2"></i>
+                                    <strong>Modelos óptimos de almacén y CEDIS</strong>
+                                </div>
+                                <div class="research-item">
+                                    <i class="fas fa-search text-indigo-600 mr-2"></i>
+                                    <strong>Rediseño data-driven y eficiencia energética</strong>
+                                </div>
+                                <div class="research-item">
+                                    <i class="fas fa-search text-indigo-600 mr-2"></i>
+                                    <strong>Ergonomía y seguridad (normativas internacionales)</strong>
+                                </div>
+                                <div class="research-item">
+                                    <i class="fas fa-search text-indigo-600 mr-2"></i>
+                                    <strong>Resiliencia ante disrupciones</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-12">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-6 tech-subtitle">Componentes de aplicación:</h3>
+                        <div class="flex flex-wrap">
+                            <span class="tech-badge">Software de layouts y herramientas BIM</span>
+                            <span class="tech-badge">Modelos de flujo y manejo de materiales (MHE)</span>
+                            <span class="tech-badge">Medición de tiempos/movimientos y evaluación ergonómica</span>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-6 tech-subtitle">Aplicaciones en práctica (timeline):</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                            <div class="timeline-stage">
+                                <div class="text-green-600 font-bold mb-2">Etapa 1</div>
+                                <div class="font-semibold mb-2">Formación</div>
+                                <p>Proyectos de bodegas y flujos; simulaciones ergonómicas</p>
+                            </div>
+                            <div class="timeline-stage">
+                                <div class="text-blue-600 font-bold mb-2">Etapa 2</div>
+                                <div class="font-semibold mb-2">Entrenamiento</div>
+                                <p>Rediseño con empresas; pruebas de eficiencia energética</p>
+                            </div>
+                            <div class="timeline-stage">
+                                <div class="text-purple-600 font-bold mb-2">Etapa 3</div>
+                                <div class="font-semibold mb-2">Empresas</div>
+                                <p>Consultorías para productividad y huella de carbono</p>
+                            </div>
+                            <div class="timeline-stage">
+                                <div class="text-orange-600 font-bold mb-2">Etapa 4</div>
+                                <div class="font-semibold mb-2">I+D+i</div>
+                                <p>Metodologías de infraestructura resiliente y logística verde</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tecnología 7: Inteligencia Artificial y Aprendizaje Automático -->
+    <section id="tecnologia7" class="py-20 animated-bg tech-bg-7 relative">
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="tech-card mb-16">
+                <div class="tech-header">
+                    <div class="flex items-center mb-4">
+                        <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center mr-6">
+                            <i class="fas fa-brain text-pink-600 text-2xl"></i>
+                        </div>
+                        <div>
+                            <h2 class="text-3xl md:text-4xl font-bold">7. Inteligencia Artificial y Aprendizaje Automático</h2>
+                            <p class="text-xl opacity-90 mt-2">Eje Transversal - Potenciando Todas las Tecnologías</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tech-content">
+                    <p class="text-lg text-gray-700 mb-8 leading-relaxed">
+                        La IA potencia todos los ejes: predice, optimiza y automatiza. Desde forecasting y ruteo hasta visión por computador, NLP y IA generativa para acelerar ingeniería y operación.
+                    </p>
+                    
+                    <div class="image-slider mb-12">
+                        <div class="slider-container">
+                            <div class="slide">
+                                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Machine Learning">
+                                <div class="slide-content">
+                                    <h3 class="text-2xl font-bold">Machine Learning</h3>
+                                    <p>Algoritmos predictivos y prescriptivos</p>
+                                </div>
+                            </div>
+                            <div class="slide">
+                                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Computer Vision">
+                                <div class="slide-content">
+                                    <h3 class="text-2xl font-bold">Computer Vision</h3>
+                                    <p>Reconocimiento visual y análisis</p>
+                                </div>
+                            </div>
+                            <div class="slide">
+                                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="NLP">
+                                <div class="slide-content">
+                                    <h3 class="text-2xl font-bold">NLP</h3>
+                                    <p>Procesamiento del lenguaje natural</p>
+                                </div>
+                            </div>
+                            <div class="slide">
+                                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="IA Generativa">
+                                <div class="slide-content">
+                                    <h3 class="text-2xl font-bold">IA Generativa</h3>
+                                    <p>Creación automatizada de contenido</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slider-controls">
+                            <button class="slider-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
+                            <button class="slider-btn next-btn"><i class="fas fa-chevron-right"></i></button>
+                        </div>
+                        <div class="slider-dots">
+                            <div class="dot active"></div>
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-800 mb-6 tech-subtitle">Subtecnologías 4.0 incluidas:</h3>
+                            <ul class="tech-list">
+                                <li>
+                                    <i class="fas fa-check-circle"></i>
+                                    <div>
+                                        <strong>ML/DL:</strong> Supervisado, no-supervisado, RL
+                                    </div>
+                                </li>
+                                <li>
+                                    <i class="fas fa-check-circle"></i>
+                                    <div>
+                                        <strong>Computer Vision:</strong> Conteo, detección, calidad
+                                    </div>
+                                </li>
+                                <li>
+                                    <i class="fas fa-check-circle"></i>
+                                    <div>
+                                        <strong>NLP:</strong> Documentación, órdenes, incidencias
+                                    </div>
+                                </li>
+                                <li>
+                                    <i class="fas fa-check-circle"></i>
+                                    <div>
+                                        <strong>IA Generativa:</strong> Documentación técnica, escenarios
+                                    </div>
+                                </li>
+                                <li>
+                                    <i class="fas fa-check-circle"></i>
+                                    <div>
+                                        <strong>MLOps:</strong> Y monitorización de modelos
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-800 mb-6 tech-subtitle">Líneas de investigación:</h3>
+                            <div class="space-y-4">
+                                <div class="research-item">
+                                    <i class="fas fa-search text-pink-600 mr-2"></i>
+                                    <strong>Predicción de demanda y tiempos de entrega</strong>
+                                </div>
+                                <div class="research-item">
+                                    <i class="fas fa-search text-pink-600 mr-2"></i>
+                                    <strong>Optimización de rutas y asignación de recursos</strong>
+                                </div>
+                                <div class="research-item">
+                                    <i class="fas fa-search text-pink-600 mr-2"></i>
+                                    <strong>Logística inversa y detección de anomalías</strong>
+                                </div>
+                                <div class="research-item">
+                                    <i class="fas fa-search text-pink-600 mr-2"></i>
+                                    <strong>Ética, gobernanza y confiabilidad de IA</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-12">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-6 tech-subtitle">Componentes de aplicación:</h3>
+                        <div class="flex flex-wrap">
+                            <span class="tech-badge">Pipelines de datos/ML</span>
+                            <span class="tech-badge">APIs de inferencia</span>
+                            <span class="tech-badge">Integración IA–ERP–WMS–TMS</span>
+                            <span class="tech-badge">Kits de visión por computador</span>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-6 tech-subtitle">Aplicaciones en práctica (timeline):</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                            <div class="timeline-stage">
+                                <div class="text-green-600 font-bold mb-2">Etapa 1</div>
+                                <div class="font-semibold mb-2">Formación</div>
+                                <p>Talleres de IA aplicada; modelos básicos de inventario</p>
+                            </div>
+                            <div class="timeline-stage">
+                                <div class="text-blue-600 font-bold mb-2">Etapa 2</div>
+                                <div class="font-semibold mb-2">Entrenamiento</div>
+                                <p>Sistemas expertos y forecasting avanzado</p>
+                            </div>
+                            <div class="timeline-stage">
+                                <div class="text-purple-600 font-bold mb-2">Etapa 3</div>
+                                <div class="font-semibold mb-2">Empresas</div>
+                                <p>IA en tiempo real dentro de ERP/TMS; última milla inteligente</p>
+                            </div>
+                            <div class="timeline-stage">
+                                <div class="text-orange-600 font-bold mb-2">Etapa 4</div>
+                                <div class="font-semibold mb-2">I+D+i</div>
+                                <p>Gemelos con IA para simulación predictiva; proyectos internacionales</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tecnología 8: Desarrollo de Plataformas y Ecosistemas Digitales -->
+    <section id="tecnologia8" class="py-20 tech-section">
+        <div class="container mx-auto px-6">
+            <div class="tech-card mb-16">
+                <div class="tech-header tech-bg-8">
+                    <div class="flex items-center mb-4">
+                        <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center mr-6">
+                            <i class="fas fa-network-wired text-teal-600 text-2xl"></i>
+                        </div>
+                        <div>
+                            <h2 class="text-3xl md:text-4xl font-bold">8. Desarrollo de Plataformas y Ecosistemas Digitales</h2>
+                            <p class="text-xl opacity-90 mt-2">Conectividad y Visibilidad End-to-End</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tech-content">
+                    <p class="text-lg text-gray-700 mb-8 leading-relaxed">
+                        Conectamos actores de la cadena con apps, APIs, marketplaces, WMS/TMS/YMS, blockchain para trazabilidad y ciberseguridad, habilitando colaboración y visibilidad end-to-end.
+                    </p>
+                    
+                    <div class="image-slider mb-12">
+                        <div class="slider-container">
+                            <div class="slide">
+                                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="APIs">
+                                <div class="slide-content">
+                                    <h3 class="text-2xl font-bold">APIs y Conectividad</h3>
+                                    <p>Integración de sistemas y servicios</p>
+                                </div>
+                            </div>
+                            <div class="slide">
+                                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Blockchain">
+                                <div class="slide-content">
+                                    <h3 class="text-2xl font-bold">Blockchain</h3>
+                                    <p>Trazabilidad y transparencia en la cadena</p>
+                                </div>
+                            </div>
+                            <div class="slide">
+                                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Ecosistemas Digitales">
+                                <div class="slide-content">
+                                    <h3 class="text-2xl font-bold">Ecosistemas Digitales</h3>
+                                    <p>Colaboración multi-actor en tiempo real</p>
+                                </div>
+                            </div>
+                            <div class="slide">
+                                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Ciberseguridad">
+                                <div class="slide-content">
+                                    <h3 class="text-2xl font-bold">Ciberseguridad</h3>
+                                    <p>Protección de datos y sistemas</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slider-controls">
+                            <button class="slider-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
+                            <button class="slider-btn next-btn"><i class="fas fa-chevron-right"></i></button>
+                        </div>
+                        <div class="slider-dots">
+                            <div class="dot active"></div>
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-800 mb-6 tech-subtitle">Subtecnologías 4.0 incluidas:</h3>
+                            <ul class="tech-list">
+                                <li>
+                                    <i class="fas fa-check-circle"></i>
+                                    <div>
+                                        <strong>WMS/TMS/YMS:</strong> Portales B2B/B2C, e-commerce/OMS
+                                    </div>
+                                </li>
+                                <li>
+                                    <i class="fas fa-check-circle"></i>
+                                    <div>
+                                        <strong>APIs:</strong> iPaaS, arquitecturas modulares cloud-native
+                                    </div>
+                                </li>
+                                <li>
+                                    <i class="fas fa-check-circle"></i>
+                                    <div>
+                                        <strong>Blockchain:</strong> Y contratos inteligentes para trazabilidad
+                                    </div>
+                                </li>
+                                <li>
+                                    <i class="fas fa-check-circle"></i>
+                                    <div>
+                                        <strong>SSO/Zero-Trust:</strong> Gestión de identidades y roles
+                                    </div>
+                                </li>
+                                <li>
+                                    <i class="fas fa-check-circle"></i>
+                                    <div>
+                                        <strong>Metaverso:</strong> Para colaboración remota en diseño/entrenamiento
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-800 mb-6 tech-subtitle">Líneas de investigación:</h3>
+                            <div class="space-y-4">
+                                <div class="research-item">
+                                    <i class="fas fa-search text-teal-600 mr-2"></i>
+                                    <strong>Plataformas colaborativas y orquestación multi-actor</strong>
+                                </div>
+                                <div class="research-item">
+                                    <i class="fas fa-search text-teal-600 mr-2"></i>
+                                    <strong>Última milla digital y logística urbana</strong>
+                                </div>
+                                <div class="research-item">
+                                    <i class="fas fa-search text-teal-600 mr-2"></i>
+                                    <strong>Estándares de interoperabilidad y blockchain aplicado</strong>
+                                </div>
+                                <div class="research-item">
+                                    <i class="fas fa-search text-teal-600 mr-2"></i>
+                                    <strong>Gobernanza de datos en ecosistemas globales</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-12">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-6 tech-subtitle">Componentes de aplicación:</h3>
+                        <div class="flex flex-wrap">
+                            <span class="tech-badge">Apps móviles/web para trazabilidad</span>
+                            <span class="tech-badge">Integraciones ERP–WMS–TMS–CRM por API</span>
+                            <span class="tech-badge">Módulos de blockchain (lotes, temperatura, compliance)</span>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-6 tech-subtitle">Aplicaciones en práctica (timeline):</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                            <div class="timeline-stage">
+                                <div class="text-green-600 font-bold mb-2">Etapa 1</div>
+                                <div class="font-semibold mb-2">Formación</div>
+                                <p>Talleres de apps y hackathons de logística digital</p>
+                            </div>
+                            <div class="timeline-stage">
+                                <div class="text-blue-600 font-bold mb-2">Etapa 2</div>
+                                <div class="font-semibold mb-2">Entrenamiento</div>
+                                <p>APIs que integran ERP con logística; simuladores de última milla</p>
+                            </div>
+                            <div class="timeline-stage">
+                                <div class="text-purple-600 font-bold mb-2">Etapa 3</div>
+                                <div class="font-semibold mb-2">Empresas</div>
+                                <p>Implementaciones en empresas; interoperabilidad en PYMEs</p>
+                            </div>
+                            <div class="timeline-stage">
+                                <div class="text-orange-600 font-bold mb-2">Etapa 4</div>
+                                <div class="font-semibold mb-2">I+D+i</div>
+                                <p>Proyectos internacionales con blockchain; estándares abiertos</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galería Multimedia -->
+    <section id="galeria" class="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-800 mb-6">Nuestra Experiencia Tecnológica</h2>
+                <div class="w-32 h-1 bg-gradient-to-r from-green-600 to-[#006633] mx-auto mb-8"></div>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Descubre nuestro trabajo a través de imágenes, videos y experiencias visuales que muestran nuestro impacto en la industria.</p>
+            </div>
+            
+            <!-- Galería interactiva -->
+            <div class="gallery-grid mb-16">
+                <div class="gallery-item interactive-card">
+                    <img src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Laboratorio de Logística">
+                    <div class="overlay">
+                        <h4 class="font-bold text-lg">Laboratorio Principal</h4>
+                        <p class="text-sm">Espacio de simulación de procesos logísticos con tecnología de punta</p>
+                    </div>
+                </div>
+                <div class="gallery-item interactive-card">
+                    <img src="https://images.unsplash.com/photo-1633356122544-f15881d36bbe?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="Realidad Virtual">
+                    <div class="overlay">
+                        <h4 class="font-bold text-lg">Entrenamiento en VR</h4>
+                        <p class="text-sm">Formación inmersiva con realidad virtual para operadores logísticos</p>
+                    </div>
+                </div>
+                <div class="gallery-item interactive-card">
+                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Investigación Aplicada">
+                    <div class="overlay">
+                        <h4 class="font-bold text-lg">Proyectos de Investigación</h4>
+                        <p class="text-sm">Desarrollo de soluciones innovadoras para la industria logística</p>
+                    </div>
+                </div>
+                <div class="gallery-item interactive-card">
+                    <img src="https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Automatización">
+                    <div class="overlay">
+                        <h4 class="font-bold text-lg">Automatización Industrial</h4>
+                        <p class="text-sm">Implementación de sistemas autónomos y robots colaborativos</p>
+                    </div>
+                </div>
+                <div class="gallery-item interactive-card">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Analítica">
+                    <div class="overlay">
+                        <h4 class="font-bold text-lg">Analítica de Datos</h4>
+                        <p class="text-sm">Visualización de KPIs en tiempo real para toma de decisiones</p>
+                    </div>
+                </div>
+                <div class="gallery-item interactive-card">
+                    <img src="https://images.unsplash.com/photo-1566576721346-d4a3b4eaeb55?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80" alt="Transporte">
+                    <div class="overlay">
+                        <h4 class="font-bold text-lg">Transporte Multimodal</h4>
+                        <p class="text-sm">Optimización de rutas y gestión de flotas con IoT</p>
+                    </div>
+                </div>
+                <div class="gallery-item interactive-card">
+                    <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="IoT">
+                    <div class="overlay">
+                        <h4 class="font-bold text-lg">Internet de las Cosas</h4>
+                        <p class="text-sm">Conectividad y trazabilidad en tiempo real con sensores IoT</p>
+                    </div>
+                </div>
+                <div class="gallery-item interactive-card">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Cloud">
+                    <div class="overlay">
+                        <h4 class="font-bold text-lg">Cloud Computing</h4>
+                        <p class="text-sm">Escalabilidad y colaboración global con soluciones en la nube</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Videos -->
+            <div class="mb-16">
+                <h3 class="text-3xl font-bold text-gray-800 mb-8 text-center">Nuestros Proyectos en Acción</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="card-3d bg-gray-900 rounded-2xl overflow-hidden shadow-2xl">
+                        <div class="video-container rounded-t-2xl overflow-hidden">
+                            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen class="rounded-t-2xl"></iframe>
+                        </div>
+                        <div class="p-6 bg-gray-800 text-white">
+                            <h4 class="font-bold text-xl mb-2">Simulación de Cadena de Suministro</h4>
+                            <p class="text-gray-300">Proyecto de optimización logística con gemelos digitales</p>
+                        </div>
+                    </div>
+                    <div class="card-3d bg-gray-900 rounded-2xl overflow-hidden shadow-2xl">
+                        <div class="video-container rounded-t-2xl overflow-hidden">
+                            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen class="rounded-t-2xl"></iframe>
+                        </div>
+                        <div class="p-6 bg-gray-800 text-white">
+                            <h4 class="font-bold text-xl mb-2">Automatización Industrial</h4>
+                            <p class="text-gray-300">Implementación de IoT en procesos de picking automatizado</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Infografías interactivas -->
+            <div>
+                <h3 class="text-3xl font-bold text-gray-800 mb-8 text-center">Infografías Tecnológicas</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="text-center card-3d bg-white p-6 rounded-2xl shadow-xl hover:shadow-2xl">
+                        <div class="bg-gradient-to-br from-blue-100 to-blue-200 rounded-xl w-full h-64 flex items-center justify-center mb-6">
+                            <div class="text-center">
+                                <i class="fas fa-route text-blue-600 text-5xl mb-4"></i>
+                                <p class="text-blue-800 font-bold">Infografía de Proceso Logístico</p>
+                            </div>
+                        </div>
+                        <h4 class="font-bold text-gray-800 text-xl mb-2">Optimización de Rutas</h4>
+                        <p class="text-gray-600">Visualización del algoritmo de optimización de rutas con IA</p>
+                    </div>
+                    <div class="text-center card-3d bg-white p-6 rounded-2xl shadow-xl hover:shadow-2xl">
+                        <div class="bg-gradient-to-br from-green-100 to-green-200 rounded-xl w-full h-64 flex items-center justify-center mb-6">
+                            <div class="text-center">
+                                <i class="fas fa-robot text-green-600 text-5xl mb-4"></i>
+                                <p class="text-green-800 font-bold">Infografía de Automatización</p>
+                            </div>
+                        </div>
+                        <h4 class="font-bold text-gray-800 text-xl mb-2">Automatización de Almacén</h4>
+                        <p class="text-gray-600">Sistema de picking automatizado con robots colaborativos</p>
+                    </div>
+                    <div class="text-center card-3d bg-white p-6 rounded-2xl shadow-xl hover:shadow-2xl">
+                        <div class="bg-gradient-to-br from-purple-100 to-purple-200 rounded-xl w-full h-64 flex items-center justify-center mb-6">
+                            <div class="text-center">
+                                <i class="fas fa-chart-line text-purple-600 text-5xl mb-4"></i>
+                                <p class="text-purple-800 font-bold">Infografía de Análisis Predictivo</p>
+                            </div>
+                        </div>
+                        <h4 class="font-bold text-gray-800 text-xl mb-2">Análisis Predictivo</h4>
+                        <p class="text-gray-600">Modelo de predicción de demanda con machine learning</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enganche Final -->
+    <section class="py-20 bg-gradient-to-r from-green-600 to-[#006633] text-white">
+        <div class="container mx-auto px-6 text-center">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-4xl md:text-5xl font-bold mb-8">"Transformando la Logística con Tecnología 4.0"</h2>
+                <p class="text-2xl mb-12">Nuestro enfoque integral combina las últimas tecnologías para crear soluciones innovadoras que impulsan la eficiencia y competitividad en la industria.</p>
+                <div class="flex flex-col sm:flex-row gap-6 justify-center">
+                    <button class="btn-animated bg-white text-green-600 hover:bg-gray-100 px-10 py-5 rounded-xl font-bold text-xl transition duration-300 shadow-2xl transform hover:scale-105">
+                        <i class="fas fa-calendar-check mr-3"></i>Solicita una consulta
+                    </button>
+                    <button class="btn-animated bg-transparent border-2 border-white hover:bg-white hover:text-green-600 text-white px-10 py-5 rounded-xl font-bold text-xl transition duration-300 shadow-2xl transform hover:scale-105">
+                        <i class="fas fa-info-circle mr-3"></i>Conoce más sobre nosotros
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="fixed bottom-8 right-8 bg-gradient-to-r from-green-600 to-[#006633] text-white w-14 h-14 rounded-full flex items-center justify-center shadow-2xl hover:bg-blue-700 transition duration-300 hidden z-50">
+        <i class="fas fa-arrow-up text-xl"></i>
+    </button>
+
+    <script>
+        // Back to Top Button
+        const backToTopButton = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.remove('hidden');
+            } else {
+                backToTopButton.classList.add('hidden');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Floating sidebar functionality
+        const sidebarItems = document.querySelectorAll('.sidebar-item');
+        
+        sidebarItems.forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                item.style.width = 'auto';
+                item.style.padding = '0 1.5rem';
+            });
+            
+            item.addEventListener('mouseleave', () => {
+                item.style.width = '60px';
+                item.style.padding = '0';
+            });
+        });
+        
+        // Animación de entrada para elementos
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fade-in-up');
+                }
+            });
+        }, observerOptions);
+        
+        // Observar elementos para animación
+        document.querySelectorAll('.feature-card, .stats-card, .innovation-card, .process-step, .specialization-card, .tech-card, .gallery-item').forEach(el => {
+            observer.observe(el);
+        });
+        
+        // Efecto hover para tarjetas tecnológicas
+        const techCards = document.querySelectorAll('.tech-card');
+        techCards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-10px)';
+                card.style.boxShadow = '0 25px 50px -12px rgba(0, 0, 0, 0.25)';
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0)';
+                card.style.boxShadow = '0 10px 30px rgba(0,0,0,0.1)';
+            });
+        });
+        
+        // Slider de imágenes
+        document.querySelectorAll('.image-slider').forEach(slider => {
+            const sliderContainer = slider.querySelector('.slider-container');
+            const slides = slider.querySelectorAll('.slide');
+            const dots = slider.querySelectorAll('.dot');
+            const prevBtn = slider.querySelector('.prev-btn');
+            const nextBtn = slider.querySelector('.next-btn');
+            
+            let currentIndex = 0;
+            const slideCount = slides.length;
+            
+            function updateSlider() {
+                sliderContainer.style.transform = `translateX(-${currentIndex * 25}%)`;
+                
+                // Actualizar puntos
+                dots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === currentIndex);
+                });
+            }
+            
+            function nextSlide() {
+                currentIndex = (currentIndex + 1) % slideCount;
+                updateSlider();
+            }
+            
+            function prevSlide() {
+                currentIndex = (currentIndex - 1 + slideCount) % slideCount;
+                updateSlider();
+            }
+            
+            // Eventos de botones
+            nextBtn.addEventListener('click', nextSlide);
+            prevBtn.addEventListener('click', prevSlide);
+            
+            // Eventos de puntos
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    currentIndex = index;
+                    updateSlider();
+                });
+            });
+            
+            // Auto-avance
+            setInterval(nextSlide, 5000);
+        });
+    </script>
+</body>
+</html>
